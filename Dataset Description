@@ -1,0 +1,10 @@
+Dataset Description-
+
+This release is comprised of de-identified data from the first year (Academic Year 2013: Fall 2012, Spring 2013,
+and Summer 2013) of MITx and HarvardX courses on the edX platform along with related documentation. These data are aggregate records,
+and each record represents one individual's activity in one edX course.
+The first release of this dataset is the HarvardX-MITx Person-Course Academic Year 2013 De-Identified dataset, version 2.0, created on 
+May 14, 2014. 
+File name: HMXPC13_DI_v1_5-14-14.csv
+
+Link to Download Datset-https://dataverse.harvard.edu/file.xhtml?fileId=2468954&version=10.0
