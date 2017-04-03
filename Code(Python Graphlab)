@@ -1,0 +1,38 @@
+#importing the necessary packages required
+
+import os
+print os.getcwd()
+import pandas as pd
+import graphlab
+
+#reading the  dataset
+
+dataset=graphlab.SFrame('open_dataset.csv')
+
+#Previewing  the Dataset
+
+dataset.head()
+
+#data cleaning i.e removing unnecessary and NA values fromm feature vectors
+
+dataset['incomplete_flag']=dataset['incomplete_flag'].fillna(value=0)
+dataset['nplay_video']=dataset['nplay_video'].fillna(value=0)
+dataset['nchapters']=dataset['nchapters'].fillna(value=0)
+dataset['nforum_posts']=dataset['nforum_posts'].fillna(value=0)
+dataset['certified']=dataset['certified'].fillna(value=0)
+dataset['grade']=dataset['grade'].fillna(value=0)
+
+# Data Exploration
+
+graphlab.canvas.set_target('ipynb')
+dataset['final_cc_cname_DI'].show()
+dataset['course_id'].show()
+dataset['gender'].show()
+
+# Creating our Logistic Regression Model
+train_data,test_data=dataset.random_split(.8,seed=0)
+Learner_Engagement_model=graphlab.logistic_classifier.create(train_data,target='incomplete_flag',features=['grade','nplay_video','nchapters','nforum_posts','certified'],validation_set=test_data)
+
+#Checking the Accuracy of our Model 
+Learner_Engagement_model.evaluate(test_data,metric='roc_curve')
+Learner_Engagement_model.show(view='Evaluation')
